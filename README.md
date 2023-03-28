@@ -41,19 +41,25 @@ func isPalindrome(_ str: String) -> Bool {
 
 
   ```swift
-  func isPalindrome(_ str: String) -> Bool {
-    var s = s.filter {
+  func isPalindrome(_ s: String) -> Bool {
+    var str = s.filter {
       $0.isLetter || $0.isNumber
     }.map {
       $0.lowercased()
     }
-    return s.reversed() == s
+    return str.reversed() == str
   }
   ```
-  И второй вариант - это метод двух указателей. Он приоритетнее тем, что по памяти алгоритм имеет константную сложность.
+  И второй вариант - это метод двух указателей. Он приоритетнее тем, что по памяти алгоритм имеет константную сложность. 
+  Метод двух указателей очень эффективен при решении большого количества задач.
+ 
+  1. В качестве двух указателей будут выступать две переменные, которые в начале хранят индексы первого и последнего элемента.
+  2. Если символ не число и не буква, то пропускаем его.
+  3. Сравниваем символы, приведенные к одному регистру.
+  4. Смещаем указатели.
 
   ```swift
-  func isPalindrome(_ str: String) -> Bool {
+  func isPalindrome(_ s: String) -> Bool {
     var start = s.startIndex 
     var end = s.index(before: s.endIndex)
 
